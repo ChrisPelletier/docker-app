@@ -16,7 +16,7 @@ https://docs.docker.com/install/
 
 ### Installing
 
-After you installing docker on your system you will need to build and start you containers using the following command:
+After you install docker on your system you will need to build and start your containers using the following command:
 
 ```
 docker-compose up
