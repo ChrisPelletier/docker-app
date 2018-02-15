@@ -1,20 +1,20 @@
 version: "3"
 services:
+  db:
+    image: 'mongo:latest'
+    ports:
+      - "27017:27017"
+    networks:
+      - db_net
   api:
     build: ./api
     ports:
       - "5000:5000"
     volumes:
       - ./api:/app
-  redis:
-    image: "redis:alpine"
-    ports:
-      - "6379:6379"
-  db:
-    image: 'mongo:latest'
-    ports:
-      - "27017:27017"
-    volumes:
-      - ./data:/data/db
+    environment:
+      MONGODB_HOST: db
+    networks:
+      - db_net
 networks:
-  webnet:
+  db_net:
