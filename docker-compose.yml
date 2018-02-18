@@ -4,6 +4,7 @@ services:
     image: 'mongo:latest'
     ports:
       - "27017:27017"
+    restart: always
     networks:
       - db_net
   api:
@@ -12,8 +13,11 @@ services:
       - "5000:5000"
     volumes:
       - ./api:/app
+    restart: always
     environment:
       MONGODB_HOST: db
+      MONGODB_DB_NAME: docker_app
+      MONGODB_PORT: 27017
     networks:
       - db_net
 networks:
